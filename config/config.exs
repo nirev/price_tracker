@@ -9,6 +9,8 @@ config :price_tracker, PriceTracker.Repo,
   password: "postgres",
   hostname: "localhost"
 
+config :price_tracker, fetcher: PriceTracker.PriceFetcher
+
 config :logger, level: :warn
 
 if :test == Mix.env do

@@ -8,3 +8,4 @@ config :price_tracker, PriceTracker.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+config :price_tracker, fetcher: PriceTracker.FetcherMock
