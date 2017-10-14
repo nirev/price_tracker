@@ -11,7 +11,7 @@ config :price_tracker, PriceTracker.Repo,
 
 config :price_tracker, fetcher: PriceTracker.PriceFetcher
 
-config :logger, level: :warn
+config :logger, level: :info
 
 if :test == Mix.env do
   import_config "test.exs"
