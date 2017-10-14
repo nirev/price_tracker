@@ -52,6 +52,7 @@ defmodule PriceTracker.Mixfile do
       {:mox, "~> 0.2.0", only: :test},
       {:poison, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
+      {:timex, "~> 3.1"},
     ]
   end
 end
