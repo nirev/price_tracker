@@ -6,5 +6,5 @@ defmodule PriceTracker.PriceFetcher do
   @type error :: {:error, reason :: String.t}
 
   @doc "Fetchs products within a date range"
-  @callback fetch(Date.Range.t) :: {:ok, [ExternalProduct.t]} | error
+  @callback fetch(range :: Date.Range.t) :: {:ok, [ExternalProduct.t]} | error
 end

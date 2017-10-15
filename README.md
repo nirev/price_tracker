@@ -1,21 +1,74 @@
-# PriceTracker
+# Price Tracker
 
-**TODO: Add description**
+[![Build Status](https://travis-ci.org/nirev/price_tracker.svg?branch=master)](https://travis-ci.org/nirev/price_tracker)
 
-## Installation
+A simple price tracker application.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `price_tracker` to your list of dependencies in `mix.exs`:
+## Description
 
-```elixir
-def deps do
-  [
-    {:price_tracker, "~> 0.1.0"}
-  ]
-end
+Some assumptions:
+- percentage change is stored with two decimal cases at most
+- no scheduling, the updating of prices could be run by cron
+- no assumption on how to run. `PriceTracker.run` could be exposed
+as a Mix task or runnable escript
+
+Dependencies:
+- Runtime:
+  - ecto: database interface
+  - httpoison: http requests
+  - poison: JSON parsing
+  - postgrex: ecto's postgres adapter
+  - timex: manipulating dates
+- dev and test:
+  - credo: static analysis for styling issues
+  - dialyxir: static analysis for type checking
+  - earmark: for documentation
+  - ex_doc: for documentation
+  - mox: testing, creates mocks for behaviours
+
+## Usage
+
+Environment:
+- elixir 1.5.1
+- erlang 20.0
+
+### "installing"
+
+```shell
+git clone git@github.com:nirev/price_tracker.git
+cd price_tracker
+mix deps.get
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/price_tracker](https://hexdocs.pm/price_tracker).
+### running tests
+
+```shell
+mix test
+```
+
+### documentation
+
+Documentation is available at https://nirev.github.io/price_tracker/ <br>
+It was generated with ex_doc using:
+
+```shell
+mix docs
+```
+
+### static code analysis
+
+[Credo](https://github.com/rrrene/credo) is used for code styling check
+
+```shell
+mix credo
+```
+
+[Dialyxir](https://github.com/jeremyjh/dialyxir) for warnings regarding 
+type mismatch and other common mistakes.
+
+The first run takes a while, as it must build a lookup table.
+
+```shell
+mix dialyzer
+```
 

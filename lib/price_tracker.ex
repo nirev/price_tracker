@@ -1,6 +1,6 @@
 defmodule PriceTracker do
   @moduledoc """
-  Documentation for PriceTracker.
+  PriceTracker
   """
 
   alias PriceTracker.ProductUpdater
