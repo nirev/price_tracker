@@ -11,6 +11,7 @@ Some assumptions:
 - no scheduling, the updating of prices could be run by cron
 - no assumption on how to run. `PriceTracker.run` could be exposed
 as a Mix task or runnable escript
+- host and api_key are configured via ENV_VARS, check `PriceTracker.PriceFetcher.API`
 
 Dependencies:
 - Runtime:
@@ -20,6 +21,7 @@ Dependencies:
   - postgrex: ecto's postgres adapter
   - timex: manipulating dates
 - dev and test:
+  - bypass: for testing external API calls
   - credo: static analysis for styling issues
   - dialyxir: static analysis for type checking
   - earmark: for documentation

@@ -1,13 +1,17 @@
 defmodule PriceTracker.PriceFetcher.API do
   @moduledoc """
   Fetches products via API call
+
+  It can be configured with ENV_VARS:
+  - PRICE_FETCHER_HOST
+  - PRICE_FETCHER_API_KEY
   """
 
   @behaviour PriceTracker.PriceFetcher
 
   alias PriceTracker.ExternalProduct
 
-  @doc "Fetchs products within a date range"
+  @doc "Fetches products within a date range"
   @impl PriceTracker.PriceFetcher
   def fetch(%Date.Range{first: first, last: last}) do
     with {:ok, host} <- get_config(:host),

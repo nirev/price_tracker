@@ -83,6 +83,8 @@
 <li>no assumption on how to run. <code class="inline">PriceTracker.run</code> could be exposed
 as a Mix task or runnable escript
 </li>
+<li>host and api_key are configured via ENV_VARS, check <a href="PriceTracker.PriceFetcher.API.html"><code class="inline">PriceTracker.PriceFetcher.API</code></a>
+</li>
 </ul>
 <p>Dependencies:</p>
 <ul>
@@ -102,6 +104,8 @@ as a Mix task or runnable escript
 </li>
 <li><p>dev and test:</p>
 <ul>
+<li>bypass: for testing external API calls
+</li>
 <li>credo: static analysis for styling issues
 </li>
 <li>dialyxir: static analysis for type checking
