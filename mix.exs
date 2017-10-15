@@ -46,6 +46,7 @@ defmodule PriceTracker.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:bypass, "~> 0.8", only: :test},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
       {:earmark, "~> 1.1", only: :dev},

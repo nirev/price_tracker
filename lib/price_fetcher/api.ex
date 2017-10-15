@@ -27,7 +27,7 @@ defmodule PriceTracker.PriceFetcher.API do
     end
   end
 
-  defp parse_response({:error, reason}) do
+  defp parse_response({:error, %{reason: reason}}) do
     {:error, "failed to get products from API. reason: #{inspect(reason)}"}
   end
 
