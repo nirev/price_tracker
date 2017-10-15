@@ -82,12 +82,14 @@ defmodule PriceTracker.ProductUpdater do
 
   @doc "Logs a given status"
   @spec log(status) :: :ok
-  def log({action, _external, _product}) do
+  def log({action, external, product}) do
     case action do
       :no_change -> :ok
       :updated -> :ok
-      :inserted -> Logger.info("[inserted]")
-      :mismatch -> Logger.error("[mismatch]")
+      :inserted -> Logger.info("[inserted] product(id: #{product.id})")
+      :mismatch ->
+        Logger.error("[mismatch] product(id: #{product.id}): " <>
+          "name: #{product.product_name} external_name: #{external.name}")
     end
   end
   def log(:nothing), do: :ok
