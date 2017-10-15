@@ -32,12 +32,18 @@ defmodule PriceTracker.PriceFetcher.API do
   end
 
   defp parse_response({:ok, %{status_code: 200, body: body}}) do
-    products =
+    decoded =
       body
-      |> Poison.decode!(as: %{"productRecords" => [%ExternalProduct{}]})
-      |> Map.get("productRecords")
+      |> Poison.decode(as: %{"productRecords" => [%ExternalProduct{}]})
 
-    {:ok, products}
+    case decoded do
+      {:ok, records} ->
+        products = records["productRecords"]
+        {:ok, products}
+
+      _otherwise ->
+        {:error, "could not parse API response"}
+    end
   end
 
   defp parse_response({:ok, %{status_code: code}}) do

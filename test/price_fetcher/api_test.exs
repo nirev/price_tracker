@@ -33,6 +33,15 @@ defmodule PriceTracker.PriceFetcher.APITest do
     assert reason =~ "status_code: 500"
   end
 
+  test "bad json response", %{bypass: bypass, range: range} do
+    Bypass.expect bypass, "GET", "/pricing/records.json", fn conn ->
+      Plug.Conn.resp(conn, 200, "{not}")
+    end
+
+    assert {:error, reason} = PriceFetcher.API.fetch(range)
+    assert reason =~ "could not parse API response"
+  end
+
   test "good response is parsed", %{bypass: bypass, range: range} do
     Bypass.expect bypass, "GET", "/pricing/records.json", fn conn ->
       Plug.Conn.resp(conn, 200, json_response())
