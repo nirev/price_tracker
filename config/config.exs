@@ -9,7 +9,10 @@ config :price_tracker, PriceTracker.Repo,
   password: "postgres",
   hostname: "localhost"
 
-config :price_tracker, fetcher: PriceTracker.PriceFetcher
+config :price_tracker, fetcher: PriceTracker.PriceFetcher.API
+
+config :price_tracker, :api_fetcher,
+  host: "https://omegapricinginc.com"
 
 config :logger, level: :info
 

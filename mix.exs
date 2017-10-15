@@ -49,6 +49,7 @@ defmodule PriceTracker.Mixfile do
       {:earmark, "~> 1.1", only: :dev},
       {:ecto, "~> 2.1"},
       {:ex_doc, "~> 0.16", only: :dev},
+      {:httpoison, "~> 0.13"},
       {:mox, "~> 0.2.0", only: :test},
       {:poison, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
