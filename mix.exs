@@ -19,7 +19,7 @@ defmodule PriceTracker.Mixfile do
       name: "Price Tracker Test",
       docs: [output: "./docs",
              extras: ["README.md"],
-             main: "README",
+             main: "readme",
              canonical: "https://nirev.github.io/price_tracker",
              source_url: "https://github.com/nirev/price_tracker"]
     ]
