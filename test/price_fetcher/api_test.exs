@@ -47,12 +47,20 @@ defmodule PriceTracker.PriceFetcher.APITest do
       Plug.Conn.resp(conn, 200, json_response())
     end
 
-    assert {:ok, products} = PriceFetcher.API.fetch(range)
-    assert Enum.count(products) == 2
+    assert IO.inspect {:ok, products} = PriceFetcher.API.fetch(range)
+    assert Enum.count(products) == 3
     assert %ExternalProduct{
       id: "123456",
       name: "Nice Chair",
       price: 0.25,
+      category: "home-furnishings",
+      discontinued: false
+    } in products
+
+    assert %ExternalProduct{
+      id: "654321",
+      name: "Fancy Chair",
+      price: 300.25,
       category: "home-furnishings",
       discontinued: false
     } in products
@@ -68,6 +76,13 @@ defmodule PriceTracker.PriceFetcher.APITest do
 
   defp json_response do
     ~s({"productRecords": [
+        {
+          "id": 654321,
+          "name": "Fancy Chair",
+          "price": "300.25",
+          "category": "home-furnishings",
+          "discontinued": false
+        },
         {
           "id": 123456,
           "name": "Nice Chair",
