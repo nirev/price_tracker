@@ -22,7 +22,7 @@ defmodule PriceTracker.ExternalProduct do
 
       external_product
       |> Map.put(:price, parse_price(price))
-      |> Map.put(:id, !id || to_string(id))
+      |> Map.put(:id, id && to_string(id))
     end
 
     defp parse_price(nil), do: nil
