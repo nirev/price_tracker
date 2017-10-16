@@ -47,7 +47,7 @@ defmodule PriceTracker.PriceFetcher.APITest do
       Plug.Conn.resp(conn, 200, json_response())
     end
 
-    assert IO.inspect {:ok, products} = PriceFetcher.API.fetch(range)
+    assert {:ok, products} = PriceFetcher.API.fetch(range)
     assert Enum.count(products) == 3
     assert %ExternalProduct{
       id: "123456",
